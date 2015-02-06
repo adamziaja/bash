@@ -21,5 +21,5 @@ nmap -F -Pn $1 --open
 echo '####################'
 # UDP
 echo "nmap -F -Pn -sU $1 --open"
-nmap -F -Pn -sU $1 --open
+nmap -F -Pn -sU $1 --open | grep -v 'Host is up'
 echo "########## END ($1): `date` ##########"
