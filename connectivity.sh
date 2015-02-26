@@ -24,10 +24,11 @@ do
         tcptraceroute $IP
 
         echo -e "$S\n\e[44mTCP:\e[42mnmap -F -Pn $IP --open\e[0m"
-        nmap -F -Pn $IP --open
+        nmap -F -Pn $IP --open | egrep -v 'Host is up|host up'
+        # -Pn: Treat all hosts as online -- skip host discovery
 
         echo -e "$S\n\e[44mUDP:\e[42mnmap -F -Pn -sU $IP --open\e[0m"
-        nmap -F -Pn -sU $IP --open | grep -v 'Host is up'
+        nmap -F -Pn -sU $IP --open | egrep -v 'Host is up|host up'
         # -Pn: Treat all hosts as online -- skip host discovery
 
         echo -e "$S\n\e[45mEND ($IP): `date`\e[0m"
