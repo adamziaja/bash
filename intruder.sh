@@ -1,9 +1,13 @@
 #!/bin/bash
 # for https://github.com/adamziaja/python/blob/master/ske.py
-for expl in $(ls -1 | grep -v $0);do
+SELF=`echo $0 | sed 's/\/.//g'`
+for expl in $(ls -1 | grep -v $SELF);do
   echo $expl
   chmod +x $expl
-  TYPE=`echo $expl | awk -F'.' '{print $2}'`
+  TYPE="`echo $expl | awk -F'.' '{print $2}'`"
+  if [ -z $TYPE ];then
+    TYPE="none"
+  fi
   if [ $TYPE == "sh" ];then
     ./$expl
   elif [ $TYPE == "py" ];then
