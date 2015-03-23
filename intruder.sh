@@ -1,6 +1,6 @@
 #!/bin/bash
 # for https://github.com/adamziaja/python/blob/master/ske.py
-for expl in $(ls -1);do
+for expl in $(ls -1 | grep -v $0);do
   echo $expl
   chmod +x $expl
   TYPE=`echo $expl | awk -F'.' '{print $2}'`
