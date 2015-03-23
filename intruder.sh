@@ -3,11 +3,12 @@
 for expl in $(ls -1);do
   echo $expl
   chmod +x $expl
-  if [ "`echo $expl | awk -F'.' '{print $2}'`" == "sh" ];then
+  TYPE=`echo $expl | awk -F'.' '{print $2}'`
+  if [ $TYPE == "sh" ];then
     ./$expl
-  elif [ "`echo $expl | awk -F'.' '{print $2}'`" == "py" ];then
+  elif [ $TYPE == "py" ];then
     python $expl
-  elif [ "`echo $expl | awk -F'.' '{print $2}'`" == "rb" ];then
+  elif [ $TYPE == "rb" ];then
     ruby $expl
   else
     ./$expl
