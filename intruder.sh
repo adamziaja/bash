@@ -1,7 +1,7 @@
 #!/bin/bash
 # for https://github.com/adamziaja/python/blob/master/ske.py
 SELF=`echo $0 | sed 's/\/.//g'`
-for expl in $(ls -1 | grep -v $SELF);do
+for expl in $(ls -1 | sort -R | grep -v $SELF);do
   echo $expl
   chmod +x $expl
   TYPE="`echo $expl | awk -F'.' '{print $2}'`"
