@@ -4,6 +4,7 @@ SELF=`echo $0 | sed 's/\/.//g'`
 for expl in $(ls -1 | sort -r | grep -v $SELF);do
   echo $expl
   chmod +x $expl
+  dos2unix $expl
   TYPE="`echo $expl | awk -F'.' '{print $2}'`"
   if [ -z $TYPE ];then
     TYPE="none"
